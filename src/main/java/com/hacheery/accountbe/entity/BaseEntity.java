@@ -2,15 +2,18 @@ package com.hacheery.accountbe.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @MappedSuperclass
+@SuperBuilder
+@NoArgsConstructor
 public abstract class BaseEntity {
-
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
