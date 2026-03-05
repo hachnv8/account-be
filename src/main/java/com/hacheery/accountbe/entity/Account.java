@@ -40,6 +40,9 @@ public class Account extends BaseEntity {
     @Convert(converter = JsonMapConverter.class)
     private Map<String, Object> loginDetails;
 
+    @Column(name = "project_id", nullable = false)
+    private Long projectId;
+
     @Column(name = "last_updated")
     private LocalDate lastUpdated;
 }

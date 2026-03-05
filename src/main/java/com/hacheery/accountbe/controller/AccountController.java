@@ -1,6 +1,7 @@
 package com.hacheery.accountbe.controller;
 
-import com.hacheery.accountbe.entity.Account;
+import com.hacheery.accountbe.dto.AccountRequestDTO;
+import com.hacheery.accountbe.dto.AccountResponseDTO;
 import com.hacheery.accountbe.service.AccountService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -18,47 +19,26 @@ public class AccountController {
 
     private final AccountService accountService;
 
-    /**
-     * GET /api/account/list
-     * Trả về mảng trực tiếp (không wrap trong object).
-     */
     @GetMapping("/list")
-    public ResponseEntity<@NonNull List<Account>> getAllAccounts() {
+    public ResponseEntity<@NonNull List<AccountResponseDTO>> getAllAccounts() {
         return ResponseEntity.ok(accountService.getAllAccounts());
     }
 
-    /**
-     * GET /api/account/list/{id}
-     */
     @GetMapping("/list/{id}")
-    public ResponseEntity<@NonNull Account> getAccountById(@PathVariable Long id) {
-        return accountService.getAccountById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<@NonNull AccountResponseDTO> getAccountById(@PathVariable Long id) {
+        return ResponseEntity.ok(accountService.getAccountById(id));
     }
 
-    /**
-     * POST /api/account/list
-     * Frontend gửi object, backend trả về object kèm id đã generate.
-     */
     @PostMapping("/list")
-    public ResponseEntity<@NonNull Account> createAccount(@RequestBody Account account) {
-        return ResponseEntity.ok(accountService.createAccount(account));
+    public ResponseEntity<@NonNull AccountResponseDTO> createAccount(@RequestBody AccountRequestDTO request) {
+        return ResponseEntity.ok(accountService.createAccount(request));
     }
 
-    /**
-     * PUT /api/account/list/{id}
-     * Frontend gửi object cập nhật, backend trả về object đã update.
-     */
     @PutMapping("/list/{id}")
-    public ResponseEntity<@NonNull Account> updateAccount(@PathVariable Long id, @RequestBody Account account) {
-        return ResponseEntity.ok(accountService.updateAccount(id, account));
+    public ResponseEntity<@NonNull AccountResponseDTO> updateAccount(@PathVariable Long id, @RequestBody AccountRequestDTO request) {
+        return ResponseEntity.ok(accountService.updateAccount(id, request));
     }
 
-    /**
-     * DELETE /api/account/list/{id}
-     * Trả về JSON message.
-     */
     @DeleteMapping("/list/{id}")
     public ResponseEntity<@NonNull Map<String, String>> deleteAccount(@PathVariable Long id) {
         accountService.deleteAccount(id);

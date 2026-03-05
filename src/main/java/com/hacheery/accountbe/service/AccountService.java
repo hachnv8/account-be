@@ -1,17 +1,18 @@
 package com.hacheery.accountbe.service;
 
 import com.hacheery.accountbe.entity.Account;
+import com.hacheery.accountbe.dto.AccountRequestDTO;
+import com.hacheery.accountbe.dto.AccountResponseDTO;
 import java.util.List;
-import java.util.Optional;
 
 public interface AccountService {
-    List<Account> getAllAccounts();
+    List<AccountResponseDTO> getAllAccounts();
     
-    Optional<Account> getAccountById(Long id);
+    AccountResponseDTO getAccountById(Long id);
     
-    Account createAccount(Account account);
+    AccountResponseDTO createAccount(AccountRequestDTO request);
     
-    Account updateAccount(Long id, Account account);
+    AccountResponseDTO updateAccount(Long id, AccountRequestDTO request);
     
     void deleteAccount(Long id);
 }
