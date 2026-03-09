@@ -38,6 +38,12 @@ public class ProjectServiceImpl implements ProjectService {
     public ProjectResponseDTO createProject(ProjectRequestDTO request) {
         Project project = new Project();
         project.setName(request.getName());
+        project.setDescription(request.getDescription());
+        project.setTechStack(request.getTechStack());
+        project.setStatus(request.getStatus());
+        project.setCategory(request.getCategory());
+        project.setRepoUrl(request.getRepoUrl());
+        project.setProdUrl(request.getProdUrl());
         project.setCount(0);
         project.setLastUpdated(LocalDate.now());
         Project saved = projectRepository.save(project);
@@ -50,6 +56,12 @@ public class ProjectServiceImpl implements ProjectService {
         Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Project not found with id: " + id));
         project.setName(request.getName());
+        project.setDescription(request.getDescription());
+        project.setTechStack(request.getTechStack());
+        project.setStatus(request.getStatus());
+        project.setCategory(request.getCategory());
+        project.setRepoUrl(request.getRepoUrl());
+        project.setProdUrl(request.getProdUrl());
         project.setLastUpdated(LocalDate.now());
         Project updated = projectRepository.save(project);
         return mapToDTO(updated);
@@ -69,6 +81,12 @@ public class ProjectServiceImpl implements ProjectService {
         dto.setName(project.getName());
         dto.setCount(project.getCount());
         dto.setLastUpdated(project.getLastUpdated());
+        dto.setDescription(project.getDescription());
+        dto.setTechStack(project.getTechStack());
+        dto.setStatus(project.getStatus());
+        dto.setCategory(project.getCategory());
+        dto.setRepoUrl(project.getRepoUrl());
+        dto.setProdUrl(project.getProdUrl());
         return dto;
     }
 }
