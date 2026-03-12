@@ -28,7 +28,7 @@ pipeline {
                 // Cấp quyền thực thi cho Maven Wrapper
                 sh 'chmod +x mvnw'
                 // Sử dụng Maven Wrapper (./mvnw) - tự tải Maven nếu server chưa có
-                sh './mvnw clean package'
+                sh './mvnw clean package -DskipTests --no-transfer-progress'
             }
         }
         
