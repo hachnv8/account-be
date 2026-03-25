@@ -29,6 +29,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/activity", "/api/activity/**").permitAll()
                         .requestMatchers("/api/mail/**").permitAll()
                         .requestMatchers("/api/notes", "/api/notes/**").permitAll()
+                        .requestMatchers("/api/tasks", "/api/tasks/**").permitAll()
+                        .requestMatchers("/api/files/**").permitAll()
+                        .requestMatchers("/uploads/**").permitAll()
                         .requestMatchers("/api/profile/**").authenticated() // dashboard login
                         .requestMatchers("/ws/**").permitAll()
                         .anyRequest()
