@@ -28,9 +28,9 @@ public class Note extends BaseEntity {
     private String projectName;
 
     private String type;
-    
+
     private String priority;
-    
+
     private String status;
 
     @Column(name = "task_id")
