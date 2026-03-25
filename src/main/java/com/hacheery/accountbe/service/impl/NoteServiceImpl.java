@@ -43,6 +43,8 @@ public class NoteServiceImpl implements NoteService {
         existingNote.setType(updatedNote.getType());
         existingNote.setPriority(updatedNote.getPriority());
         existingNote.setStatus(updatedNote.getStatus());
+        existingNote.setTaskId(updatedNote.getTaskId());
+        existingNote.setAttachments(updatedNote.getAttachments());
         existingNote.setUpdatedBy(currentUsername != null ? currentUsername : "System");
         return noteRepository.save(existingNote);
     }

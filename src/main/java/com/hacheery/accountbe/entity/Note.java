@@ -32,4 +32,11 @@ public class Note extends BaseEntity {
     private String priority;
     
     private String status;
+
+    @Column(name = "task_id")
+    private Long taskId;
+
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
+    private String attachments;
 }
